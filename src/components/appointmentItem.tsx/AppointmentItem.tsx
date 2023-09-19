@@ -12,6 +12,7 @@ type AppointmentProps = Optional<IAppointment, "canceled"> & {
 function AppointmentItem({ name, date, phone, service, canceled, openModal, selectedId }: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
+  console.log("render item");
 
   useEffect(() => {
     setTimeLeft(`${dayjs(date).diff(undefined, "h")}: ${dayjs(date).diff(undefined, "m") % 60}`);

@@ -12,6 +12,7 @@ const initialState: IInitialState = {
 interface ProviderProps {
   children: React.ReactNode;
 }
+
 interface AppointmentContextValue extends IInitialState {
   getAppointments: () => void;
   getActiveAppointments: () => void;
@@ -22,9 +23,7 @@ export const AppointmentContext = createContext<AppointmentContextValue>({
   activeAppointments: initialState.activeAppointments,
   appointmentLoadingStatus: initialState.appointmentLoadingStatus,
   getAppointments: () => {},
-  getActiveAppointments: () => {
-    console.log("hello");
-  },
+  getActiveAppointments: () => {},
 });
 
 const AppointmentContextProvider = ({ children }: ProviderProps) => {
@@ -36,9 +35,11 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
     allAppointments: state.allAppointments,
     activeAppointments: state.activeAppointments,
     appointmentLoadingStatus: loadingStatus,
+
     getAppointments: () => {
       getAllAppointments().then(data => dispath({ type: ActionsTypes.SET_ALL_APPOINTMENTS, payload: data }));
     },
+
     getActiveAppointments: () => {
       getActiveAppointments().then(data => dispath({ type: ActionsTypes.SET_ACTIVE_APPOINTMENTS, payload: data }));
     },

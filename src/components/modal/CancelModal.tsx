@@ -1,6 +1,9 @@
 import "./modal.scss";
 import Portal from "../portal/Portal";
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
+
+import useAppointmentService from "../../services/AppointmentService";
+import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
 
 interface IModalProps {
   handleClose: (state: boolean) => void;
@@ -8,6 +11,11 @@ interface IModalProps {
 }
 
 function CancelModal({ handleClose, selectedId }: IModalProps) {
+  const [isDisable, setDisable] = useState<boolean>(false);
+  const [cancelStatus, setCancelStatus] = useState<boolean | null>(null);
+  const { getActiveAppointments } = useContext(AppointmentContext);
+  const { cancelOneAppointment } = useAppointmentService();
+
   const closeOnEscapeKey = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       handleClose(false);
@@ -19,6 +27,25 @@ function CancelModal({ handleClose, selectedId }: IModalProps) {
     return () => window.removeEventListener("keydown", closeOnEscapeKey);
   }, []);
 
+  const handleCancelAppointment = (id: number) => {
+    setDisable(true);
+    cancelOneAppointment(id)
+      .then(() => {
+        setCancelStatus(true);
+      })
+      .catch(e => {
+        console.log(e);
+        setCancelStatus(false);
+        setDisable(false);
+      });
+  };
+  const closeModal = () => {
+    handleClose(false);
+    if (cancelStatus) {
+      getActiveAppointments();
+    }
+  };
+
   return (
     <Portal>
       {" "}
@@ -26,12 +53,20 @@ function CancelModal({ handleClose, selectedId }: IModalProps) {
         <div className="modal__body">
           <span className="modal__title">Are you sure you want to delete the appointment? {selectedId}</span>
           <div className="modal__btns">
-            <button className="modal__ok">Ok</button>
-            <button onClick={() => handleClose(false)} className="modal__close">
+            <button disabled={isDisable} onClick={() => handleCancelAppointment(selectedId)} className="modal__ok">
+              Ok
+            </button>
+            <button
+              onClick={() => {
+                handleClose(false);
+                closeModal();
+              }}
+              className="modal__close"
+            >
               Close
             </button>
           </div>
-          <div className="modal__status">Success</div>
+          <div className="modal__status">{cancelStatus === null ? "" : cancelStatus ? "Succses" : "Error"}</div>
         </div>
       </div>
     </Portal>
