@@ -19,9 +19,9 @@ function CAForm() {
   const { getActiveAppointments } = useContext(AppointmentContext);
 
   const handleSubmit = () => {
-    setFormData(prev => {
-      return { ...prev, date: dayjs(prev.date).format("YYYY-MM-DDTHH:mm") };
-    });
+    // setFormData(prev => {
+    //   return { ...prev, date: dayjs(prev.date).format("YYYY-MM-DDTHH:mm") };
+    // });
 
     createNewAppointmens(formData)
       .then(() => {
@@ -66,7 +66,7 @@ function CAForm() {
         name="phone"
         id="phone"
         placeholder="+1 890 335 372"
-        // pattern="^\++[0-9]{1} [0-9]{3} [0-9]{3} [0-9]{3}"
+        pattern="^\++[0-9]{1} [0-9]{3} [0-9]{3} [0-9]{3}"
         title="Format should be +1 804 944 567"
         required
       />
@@ -80,7 +80,7 @@ function CAForm() {
         name="date"
         id="date"
         placeholder="DD/MM/YYYY HH:mm"
-        // pattern="^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$"
+        pattern="^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$"
         title="Format should be DD/MM/YYYY HH:mm"
         required
       />

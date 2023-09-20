@@ -57,44 +57,52 @@
       "canceled": true
     },
     {
-      "id": 1695020994829,
-      "date": "",
-      "name": "+1804222 255",
-      "service": "",
-      "phone": "",
-      "canceled": false
-    },
-    {
-      "id": 1695021005852,
-      "date": "",
-      "name": "asdasd2131231",
-      "service": "",
-      "phone": "",
-      "canceled": false
-    },
-    {
-      "id": 1695040767715,
-      "date": "",
-      "name": "10.12.2023 8:15",
-      "service": "",
-      "phone": "",
-      "canceled": false
-    },
-    {
-      "id": 1695041098290,
-      "date": "10.12.2023 8:15",
-      "name": "asdsa",
-      "service": "asdas",
-      "phone": "87009227914",
-      "canceled": false
-    },
-    {
       "id": 1695097421161,
       "date": "2023-10-12T08:15",
       "name": "Ali",
       "service": "12312",
       "phone": "231312321",
+      "canceled": true
+    },
+    {
+      "id": 1695100746953,
+      "date": "2024-05-19T13:30",
+      "name": "Ali",
+      "service": "asdada",
+      "phone": "+1 444 444 444",
+      "canceled": true
+    },
+    {
+      "id": 1695118105340,
+      "date": "2024-05-19T13:30",
+      "name": "Alina",
+      "service": "asdasdas",
+      "phone": "+1 888 888 888",
+      "canceled": true
+    },
+    {
+      "id": 1695199497030,
+      "date": "2024-05-19T13:30",
+      "name": "Ali",
+      "service": "Haricut",
+      "phone": "+1 888 888 888",
+      "canceled": true
+    },
+    {
+      "id": 1695200706052,
+      "date": "2023-10-19T13:30",
+      "name": "Aslan",
+      "service": "Strijka",
+      "phone": "+1 444 444 444",
       "canceled": false
+    },
+    {
+      "id": 1695200733021,
+      "date": "2024-05-19T13:30",
+      "name": "Ali",
+      "service": "Бритье под ноль",
+      "phone": "+1 444 444 444",
+      "canceled": true
     }
   ]
 }

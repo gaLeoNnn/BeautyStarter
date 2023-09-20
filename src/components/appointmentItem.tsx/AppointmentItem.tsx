@@ -12,7 +12,6 @@ type AppointmentProps = Optional<IAppointment, "canceled"> & {
 function AppointmentItem({ name, date, phone, service, canceled, openModal, selectedId }: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
-  console.log("render item");
 
   useEffect(() => {
     setTimeLeft(`${dayjs(date).diff(undefined, "h")}: ${dayjs(date).diff(undefined, "m") % 60}`);
@@ -40,15 +39,17 @@ function AppointmentItem({ name, date, phone, service, canceled, openModal, sele
           <span className="appointment__timer">{timeLeft}</span>
         </div>
       ) : null}
-      <button
-        onClick={() => {
-          openModal(true);
-          selectedId();
-        }}
-        className="appointment__cancel"
-      >
-        Cancel
-      </button>
+      {!canceled ? (
+        <button
+          onClick={() => {
+            openModal(true);
+            selectedId();
+          }}
+          className="appointment__cancel"
+        >
+          Cancel
+        </button>
+      ) : null}
       {canceled ? <div className="appointment__canceled">Canceled</div> : null}
     </div>
   );

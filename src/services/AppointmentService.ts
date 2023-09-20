@@ -4,6 +4,8 @@ import { hasRequiredFields } from "../utility/hasRequiredFields";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
+dayjs.extend(customParseFormat);
+
 const requerdField = ["id", "date", "name", "service", "phone", "canceled"];
 
 const useAppointmentService = () => {
@@ -50,7 +52,9 @@ const useAppointmentService = () => {
   const createNewAppointmens = async (body: IAppointment) => {
     const id = new Date().getTime();
     body["id"] = id;
-    body["date"] = dayjs(body.date, "DD-MM-YYYY HH:mm").format("YYYY-MM-DDTHH:mm"); // '25/01/2019'
+
+    body["date"] = dayjs(body.date, "DD/MM/YYYY HH:mm").format("YYYY-MM-DDTHH:mm");
+    console.log(body["date"]);
     return await request({ url: _apiKey, method: "POST", body: JSON.stringify(body) });
   };
 

@@ -1,20 +1,21 @@
+import { router } from "../router/router";
+import { RouterProvider, Outlet } from "react-router-dom";
 import Header from "../header/Header";
-import SchedulePage from "../../pages/schedule/SchedulePage";
 import AppointmentContextProvider from "../../context/appointments/AppointmentsContext";
-// import HistoryPage from "../../pages/history/HistoryPage";
-// import CancelModal from "../modal/CancelModal";
 
 import "./app.scss";
 
 function App() {
+  return <RouterProvider router={router} />;
+}
+
+export function Root() {
   return (
     <main className="board">
       <Header />
       <AppointmentContextProvider>
-        <SchedulePage />
+        <Outlet />
       </AppointmentContextProvider>
-      {/* <HistoryPage /> */}
-      {/* <CancelModal /> */}
     </main>
   );
 }
