@@ -9,100 +9,59 @@
       "canceled": true
     },
     {
-      "id": 2,
-      "date": "2023-10-01T15:15",
-      "name": "Sam Smith",
-      "service": "Pedicure",
-      "phone": "+1 746 235 890",
-      "canceled": true
-    },
-    {
-      "id": 3,
-      "date": "2023-12-02T09:00",
-      "name": "Alex Collson",
+      "id": 1695613005764,
+      "date": "2023-10-01T13:30",
+      "name": "Ekaterina",
       "service": "Manicure",
-      "phone": "+1 238 545 045",
-      "canceled": true
-    },
-    {
-      "id": 4,
-      "date": "2023-12-10T09:10",
-      "name": "Kim Paul",
-      "service": "Cleaning",
-      "phone": "+1 928 345 356",
-      "canceled": true
-    },
-    {
-      "id": 5,
-      "date": "2023-11-16T10:00",
-      "name": "Innes Olaf",
-      "service": "Haircut",
-      "phone": "+1 458 895 888",
-      "canceled": true
-    },
-    {
-      "id": 6,
-      "date": "2023-08-01T14:00",
-      "name": "Yan Somer",
-      "service": "Haircut",
-      "phone": "+1 678 995 484",
-      "canceled": true
-    },
-    {
-      "id": 7,
-      "date": "2023-07-10T13:00",
-      "name": "John Cena",
-      "service": "Beard",
-      "phone": "+1 333 835 438",
-      "canceled": true
-    },
-    {
-      "id": 1695097421161,
-      "date": "2023-10-12T08:15",
-      "name": "Ali",
-      "service": "12312",
-      "phone": "231312321",
-      "canceled": true
-    },
-    {
-      "id": 1695100746953,
-      "date": "2024-05-19T13:30",
-      "name": "Ali",
-      "service": "asdada",
-      "phone": "+1 444 444 444",
-      "canceled": true
-    },
-    {
-      "id": 1695118105340,
-      "date": "2024-05-19T13:30",
-      "name": "Alina",
-      "service": "asdasdas",
-      "phone": "+1 888 888 888",
-      "canceled": true
-    },
-    {
-      "id": 1695199497030,
-      "date": "2024-05-19T13:30",
-      "name": "Ali",
-      "service": "Haricut",
-      "phone": "+1 888 888 888",
-      "canceled": true
-    },
-    {
-      "id": 1695200706052,
-      "date": "2023-10-19T13:30",
-      "name": "Aslan",
-      "service": "Strijka",
-      "phone": "+1 444 444 444",
+      "phone": "+1 233 223 222",
+      "specialist": "Alina",
       "canceled": false
     },
     {
-      "id": 1695200733021,
-      "date": "2024-05-19T13:30",
-      "name": "Ali",
-      "service": "Бритье под ноль",
+      "id": 1695613165101,
+      "date": "2023-10-19T13:30",
+      "name": "Inna",
+      "service": "haircut",
       "phone": "+1 444 444 444",
-      "canceled": true
+      "specialist": "Alina",
+      "canceled": false
+    },
+
+    {
+      "id": 1695613334714,
+      "date": "2023-08-19T13:30",
+      "name": "Inna",
+      "service": "haircut",
+      "phone": "+1 444 444 444",
+      "specialist": "Alina",
+      "canceled": false
+    },
+    {
+      "id": 1695613397196,
+      "date": "2023-10-19T13:50",
+      "name": "Inna",
+      "service": "Manicure",
+      "phone": "+1 444 444 444",
+      "specialist": "Alina",
+      "canceled": false
+    }
+  ],
+  "employees": [
+    {
+      "name": "Alina",
+      "position": "manager"
+    },
+    {
+      "name": "Tolganai",
+      "position": "Administrator"
+    },
+    {
+      "name": "Alena",
+      "position": "hairdresser"
+    },
+    {
+      "name": "Elena",
+      "position": "hairdresser"
     }
   ]
 }

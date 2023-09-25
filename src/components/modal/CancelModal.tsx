@@ -48,7 +48,6 @@ function CancelModal({ handleClose, selectedId }: IModalProps) {
 
   return (
     <Portal>
-      {" "}
       <div className="modal">
         <div className="modal__body">
           <span className="modal__title">Are you sure you want to delete the appointment? {selectedId}</span>

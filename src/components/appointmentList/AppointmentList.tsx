@@ -11,6 +11,11 @@ function AppointmentList() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(0);
 
+  const handleOpenModal = (id: number) => {
+    setIsOpen(true);
+    setSelectedId(id);
+  };
+
   useEffect(() => {
     getActiveAppointments();
   }, [calendarDate]);
@@ -19,7 +24,7 @@ function AppointmentList() {
     return <Spinner />;
   }
   const elem = activeAppointments.map(item => {
-    return <AppointmentItem {...item} key={item.id} openModal={setIsOpen} selectedId={() => setSelectedId(item.id)} />;
+    return <AppointmentItem {...item} key={item.id} handleOpenModal={handleOpenModal} />;
   });
 
   return (

@@ -4,13 +4,13 @@ import "./appointmentItem.scss";
 import dayjs from "dayjs";
 import { Optional } from "utility-types";
 
-type AppointmentProps = Optional<IAppointment, "canceled"> & {
-  openModal: (state: boolean) => void;
-  selectedId: () => void;
+export type AppointmentProps = Optional<IAppointment, "canceled" | "date"> & {
+  handleOpenModal?: (state: number) => void;
 };
 
-function AppointmentItem({ name, date, phone, service, canceled, openModal, selectedId }: AppointmentProps) {
+function AppointmentItem({ id, name, date, phone, service, canceled, specialist, handleOpenModal }: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
+
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
 
   useEffect(() => {
@@ -31,25 +31,30 @@ function AppointmentItem({ name, date, phone, service, canceled, openModal, sele
         <span className="appointment__date">Date: {formattedDate}</span>
         <span className="appointment__name">Name: {name}</span>
         <span className="appointment__service">Service: {service}</span>
+        <span className="appointment__specialist">Specialist: {specialist}</span>
         <span className="appointment__phone">Phone:{phone}</span>
       </div>
-      {!canceled ? (
-        <div className="appointment__time">
-          <span>Time left:</span>
-          <span className="appointment__timer">{timeLeft}</span>
-        </div>
+      {canceled === undefined ? (
+        <>
+          {date !== undefined ? (
+            <div className="appointment__time">
+              <span>Time left:</span>
+              <span className="appointment__timer">{timeLeft}</span>
+            </div>
+          ) : null}
+          <button
+            onClick={() => {
+              if (handleOpenModal) {
+                handleOpenModal(id);
+              }
+            }}
+            className="appointment__cancel"
+          >
+            {date ? "Cancel" : "Delete"}
+          </button>
+        </>
       ) : null}
-      {!canceled ? (
-        <button
-          onClick={() => {
-            openModal(true);
-            selectedId();
-          }}
-          className="appointment__cancel"
-        >
-          Cancel
-        </button>
-      ) : null}
+
       {canceled ? <div className="appointment__canceled">Canceled</div> : null}
     </div>
   );

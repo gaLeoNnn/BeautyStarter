@@ -7,6 +7,10 @@ import { AppointmentContext } from "../../context/appointments/AppointmentsConte
 function Calendar() {
   const { calendarDate, setDateAndFilter } = useContext(AppointmentContext);
 
+  const handleReset = () => {
+    setDateAndFilter([null, null]);
+  };
+
   return (
     <div className="calendar">
       <LibCalendar
@@ -16,6 +20,9 @@ function Calendar() {
         }}
         selectRange
       />
+      <button onClick={handleReset} className="calendar__reset">
+        Reset
+      </button>
     </div>
   );
 }

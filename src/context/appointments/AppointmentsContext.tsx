@@ -9,6 +9,7 @@ const initialState: IInitialState = {
   activeAppointments: [],
   appointmentLoadingStatus: "idle",
   calendarDate: [null, null],
+  allEmployees: [],
 };
 
 interface ProviderProps {
@@ -19,29 +20,32 @@ interface AppointmentContextValue extends IInitialState {
   getAppointments: () => void;
   getActiveAppointments: () => void;
   setDateAndFilter: (newDate: Value) => void;
+  getAllEmployees: () => void;
 }
 
 export const AppointmentContext = createContext<AppointmentContextValue>({
   allAppointments: [],
+  allEmployees: [],
   activeAppointments: initialState.activeAppointments,
   appointmentLoadingStatus: initialState.appointmentLoadingStatus,
   calendarDate: initialState.calendarDate,
   getAppointments: () => {},
   getActiveAppointments: () => {},
   setDateAndFilter: (newDate: Value) => {},
+  getAllEmployees: () => {},
 });
 
 const AppointmentContextProvider = ({ children }: ProviderProps) => {
   const [state, dispath] = useReducer(reducer, initialState);
 
-  const { loadingStatus, getAllAppointments, getActiveAppointments } = useAppointmentService();
+  const { loadingStatus, getAllAppointments, getActiveAppointments, getAllEmployees } = useAppointmentService();
 
   const value: AppointmentContextValue = {
     allAppointments: state.allAppointments,
+    allEmployees: state.allEmployees,
     activeAppointments: state.activeAppointments,
     appointmentLoadingStatus: loadingStatus,
     calendarDate: state.calendarDate,
-
     getAppointments: () => {
       getAllAppointments().then(data => {
         const filteredData = data.filter(item => {
@@ -59,7 +63,6 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
         dispath({ type: ActionsTypes.SET_ALL_APPOINTMENTS, payload: filteredData });
       });
     },
-
     getActiveAppointments: () => {
       getActiveAppointments().then(data => {
         const filteredData = data.filter(item => {
@@ -81,6 +84,11 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
 
     setDateAndFilter: (newDate: Value) => {
       dispath({ type: ActionsTypes.SET_CALENDAR_DATE, payload: newDate });
+    },
+    getAllEmployees: () => {
+      getAllEmployees().then(data => {
+        dispath({ type: ActionsTypes.SET_ALL_EMPLOYEES, payload: data });
+      });
     },
   };
 

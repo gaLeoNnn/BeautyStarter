@@ -14,7 +14,7 @@ function HistoryList() {
   }, [calendarDate]);
 
   const elem = allAppointments.map(item => {
-    return <AppointmentItem {...item} key={item.id} openModal={setIsOpen} selectedId={() => setSelectedId(item.id)} />;
+    return <AppointmentItem {...item} key={item.id} />;
   });
 
   return <>{elem}</>;

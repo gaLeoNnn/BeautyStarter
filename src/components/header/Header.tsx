@@ -16,6 +16,16 @@ function Header() {
               Schedule
             </NavLink>
           </li>
+          <li className="header__link ">
+            <NavLink to={"/employees"} className={({ isActive }) => (isActive ? "header__link_active" : "")}>
+              Eployees
+            </NavLink>
+          </li>
+          <li className="header__link ">
+            <NavLink to={"/customer"} className={({ isActive }) => (isActive ? "header__link_active" : "")}>
+              Customer Base
+            </NavLink>
+          </li>
           <li className="header__link">
             <NavLink to={"/history"} className={({ isActive }) => (isActive ? "header__link_active" : "")}>
               History

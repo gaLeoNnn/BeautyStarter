@@ -1,5 +1,5 @@
 import { IAppointmentAction } from "./actions";
-import { IAppointment, AppointmentActive } from "../../shared/interfaces/appointment.interface";
+import { IAppointment, AppointmentActive, IEmployee } from "../../shared/interfaces/appointment.interface";
 import { ActionsTypes } from "./actions";
 import { LooseValue } from "react-calendar/dist/cjs/shared/types";
 export interface IInitialState {
@@ -7,6 +7,7 @@ export interface IInitialState {
   activeAppointments: AppointmentActive[] | [];
   appointmentLoadingStatus: string;
   calendarDate: LooseValue;
+  allEmployees: IEmployee[];
 }
 
 export default function reducer(state: IInitialState, action: IAppointmentAction) {
@@ -19,6 +20,8 @@ export default function reducer(state: IInitialState, action: IAppointmentAction
       return { ...state, appointmentLoadingStatus: "loading" };
     case ActionsTypes.SET_CALENDAR_DATE:
       return { ...state, calendarDate: action.payload };
+    case ActionsTypes.SET_ALL_EMPLOYEES:
+      return { ...state, allEmployees: action.payload };
     default:
       return state;
   }

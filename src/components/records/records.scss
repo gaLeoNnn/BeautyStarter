@@ -1,0 +1,23 @@
+.record {
+  width: 400px;
+  border-bottom: 1px solid #000;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 15px;
+  margin-top: 60px;
+  margin-right: 100px;
+
+  &__service {
+    display: block;
+    margin-bottom: 10px;
+  }
+  &__specialist {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  &__date {
+    float: right;
+  }
+}
