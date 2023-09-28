@@ -10,6 +10,7 @@ const initialState: IInitialState = {
   appointmentLoadingStatus: "idle",
   calendarDate: [null, null],
   allEmployees: [],
+  activeEmployees: [],
 };
 
 interface ProviderProps {
@@ -21,11 +22,13 @@ interface AppointmentContextValue extends IInitialState {
   getActiveAppointments: () => void;
   setDateAndFilter: (newDate: Value) => void;
   getAllEmployees: () => void;
+  getActiveEmployees: () => void;
 }
 
 export const AppointmentContext = createContext<AppointmentContextValue>({
   allAppointments: [],
   allEmployees: [],
+  activeEmployees: [],
   activeAppointments: initialState.activeAppointments,
   appointmentLoadingStatus: initialState.appointmentLoadingStatus,
   calendarDate: initialState.calendarDate,
@@ -33,16 +36,19 @@ export const AppointmentContext = createContext<AppointmentContextValue>({
   getActiveAppointments: () => {},
   setDateAndFilter: (newDate: Value) => {},
   getAllEmployees: () => {},
+  getActiveEmployees: () => {},
 });
 
 const AppointmentContextProvider = ({ children }: ProviderProps) => {
   const [state, dispath] = useReducer(reducer, initialState);
 
-  const { loadingStatus, getAllAppointments, getActiveAppointments, getAllEmployees } = useAppointmentService();
+  const { loadingStatus, getAllAppointments, getActiveAppointments, getAllEmployees, getActiveEmployees } =
+    useAppointmentService();
 
   const value: AppointmentContextValue = {
     allAppointments: state.allAppointments,
     allEmployees: state.allEmployees,
+    activeEmployees: state.activeEmployees,
     activeAppointments: state.activeAppointments,
     appointmentLoadingStatus: loadingStatus,
     calendarDate: state.calendarDate,
@@ -88,6 +94,11 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
     getAllEmployees: () => {
       getAllEmployees().then(data => {
         dispath({ type: ActionsTypes.SET_ALL_EMPLOYEES, payload: data });
+      });
+    },
+    getActiveEmployees: () => {
+      getActiveEmployees().then(data => {
+        dispath({ type: ActionsTypes.SET_ACTIVE_EMPLOYEES, payload: data });
       });
     },
   };

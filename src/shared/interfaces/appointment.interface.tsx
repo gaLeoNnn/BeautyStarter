@@ -12,8 +12,8 @@ export interface IEmployee {
   id: number;
   name: string;
   service: string;
-  specialist: string;
   phone: string;
+  fired: boolean;
 }
 
 export type AppointmentActive = Omit<IAppointment, "canceled">;

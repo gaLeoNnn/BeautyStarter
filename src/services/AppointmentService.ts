@@ -61,15 +61,25 @@ const useAppointmentService = () => {
     return await request({ url: _apiKey, method: "POST", body: JSON.stringify(body) });
   };
 
-  const getAllEmployees = () => {
-    const result = request({ url: _apiEmployee });
+  const getAllEmployees = async (): Promise<IEmployee[]> => {
+    const result = await request({ url: _apiEmployee });
     return result;
+  };
+
+  const getActiveEmployees = async () => {
+    const result = await getAllEmployees();
+    const transformed: IEmployee[] = result.filter(item => !item.fired);
+    return transformed;
   };
 
   const createNewEmployye = async (body: IEmployee) => {
     const id = new Date().getTime();
     body["id"] = id;
     return await request({ url: _apiEmployee, method: "POST", body: JSON.stringify(body) });
+  };
+
+  const cancelOneEmployee = async (id: number) => {
+    return await request({ url: `${_apiEmployee}/${id}`, method: "PATCH", body: JSON.stringify({ fired: true }) });
   };
 
   return {
@@ -80,6 +90,8 @@ const useAppointmentService = () => {
     createNewAppointmens,
     createNewEmployye,
     getAllEmployees,
+    getActiveEmployees,
+    cancelOneEmployee,
   };
 };
 export default useAppointmentService;

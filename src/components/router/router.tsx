@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/employees",
-        element: <EmployeesPage />,
+        element: <EmployeesPage height="115px" />,
       },
       {
         path: "/history",

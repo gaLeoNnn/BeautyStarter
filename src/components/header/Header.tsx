@@ -18,7 +18,7 @@ function Header() {
           </li>
           <li className="header__link ">
             <NavLink to={"/employees"} className={({ isActive }) => (isActive ? "header__link_active" : "")}>
-              Eployees
+              Employees
             </NavLink>
           </li>
           <li className="header__link ">

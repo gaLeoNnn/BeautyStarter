@@ -7,6 +7,7 @@ export enum ActionsTypes {
   SET_FETCHING_LOADING = "SET_FETCHING_LOADING",
   SET_CALENDAR_DATE = "SET_CALENDAR_DATE",
   SET_ALL_EMPLOYEES = "SET_ALL_EMPLOYEES",
+  SET_ACTIVE_EMPLOYEES = "SET_ACTIVE_EMPLOYEES",
 }
 
 export type IAppointmentAction =
@@ -14,4 +15,5 @@ export type IAppointmentAction =
   | { type: ActionsTypes.SET_ALL_APPOINTMENTS; payload: IAppointment[] }
   | { type: ActionsTypes.SET_FETCHING_LOADING }
   | { type: ActionsTypes.SET_CALENDAR_DATE; payload: LooseValue }
-  | { type: ActionsTypes.SET_ALL_EMPLOYEES; payload: IEmployee[] };
+  | { type: ActionsTypes.SET_ALL_EMPLOYEES; payload: IEmployee[] }
+  | { type: ActionsTypes.SET_ACTIVE_EMPLOYEES; payload: IEmployee[] };

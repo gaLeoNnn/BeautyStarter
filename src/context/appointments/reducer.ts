@@ -8,6 +8,7 @@ export interface IInitialState {
   appointmentLoadingStatus: string;
   calendarDate: LooseValue;
   allEmployees: IEmployee[];
+  activeEmployees: IEmployee[];
 }
 
 export default function reducer(state: IInitialState, action: IAppointmentAction) {
@@ -22,6 +23,8 @@ export default function reducer(state: IInitialState, action: IAppointmentAction
       return { ...state, calendarDate: action.payload };
     case ActionsTypes.SET_ALL_EMPLOYEES:
       return { ...state, allEmployees: action.payload };
+    case ActionsTypes.SET_ACTIVE_EMPLOYEES:
+      return { ...state, activeEmployees: action.payload };
     default:
       return state;
   }

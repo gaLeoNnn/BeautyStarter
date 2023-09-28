@@ -25,8 +25,8 @@ function CAForm({ showInput }: employeeForm) {
     id: 0,
     phone: "",
     name: "",
-    specialist: "",
     service: "",
+    fired: false,
   });
 
   const { getActiveAppointments, getAllEmployees } = useContext(AppointmentContext);
@@ -53,7 +53,7 @@ function CAForm({ showInput }: employeeForm) {
     e.preventDefault();
     createNewEmployye(formEmployee)
       .then(() => {
-        setFormEmployee({ id: 0, name: "", specialist: "", service: "", phone: "" });
+        setFormEmployee({ id: 0, name: "", service: "", phone: "", fired: false });
         getAllEmployees();
       })
       .catch(e => {
@@ -89,17 +89,6 @@ function CAForm({ showInput }: employeeForm) {
       </label>
 
       <input onChange={handleChange} type="text" name="service" id="service" placeholder="Service name" required />
-      <label htmlFor="service">
-        Specialist<span>*</span>
-      </label>
-      <input
-        onChange={handleChange}
-        type="text"
-        name="specialist"
-        id="specialist"
-        placeholder="Specialist name"
-        required
-      />
 
       <label htmlFor="phone">
         Phone number<span>*</span>
@@ -116,6 +105,18 @@ function CAForm({ showInput }: employeeForm) {
       />
       {showInput ? null : (
         <>
+          <label htmlFor="service">
+            Specialist<span>*</span>
+          </label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="specialist"
+            id="specialist"
+            placeholder="Specialist name"
+            required
+          />
+
           <label htmlFor="date">
             Date<span>*</span>
           </label>

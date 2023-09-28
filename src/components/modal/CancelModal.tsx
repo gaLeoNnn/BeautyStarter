@@ -8,13 +8,14 @@ import { AppointmentContext } from "../../context/appointments/AppointmentsConte
 interface IModalProps {
   handleClose: (state: boolean) => void;
   selectedId: number;
+  isEmployee?: boolean;
 }
 
-function CancelModal({ handleClose, selectedId }: IModalProps) {
+function CancelModal({ handleClose, selectedId, isEmployee }: IModalProps) {
   const [isDisable, setDisable] = useState<boolean>(false);
   const [cancelStatus, setCancelStatus] = useState<boolean | null>(null);
-  const { getActiveAppointments } = useContext(AppointmentContext);
-  const { cancelOneAppointment } = useAppointmentService();
+  const { getActiveAppointments, getActiveEmployees } = useContext(AppointmentContext);
+  const { cancelOneAppointment, cancelOneEmployee } = useAppointmentService();
 
   const closeOnEscapeKey = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
@@ -28,19 +29,24 @@ function CancelModal({ handleClose, selectedId }: IModalProps) {
   }, []);
 
   const handleCancelAppointment = (id: number) => {
-    setDisable(true);
-    cancelOneAppointment(id)
-      .then(() => {
-        setCancelStatus(true);
-      })
-      .catch(e => {
-        console.log(e);
-        setCancelStatus(false);
-        setDisable(false);
-      });
+    if (isEmployee) {
+      cancelOneEmployee(id);
+    } else {
+      setDisable(true);
+      cancelOneAppointment(id)
+        .then(() => {
+          setCancelStatus(true);
+        })
+        .catch(e => {
+          console.log(e);
+          setCancelStatus(false);
+          setDisable(false);
+        });
+    }
   };
   const closeModal = () => {
     handleClose(false);
+    getActiveEmployees();
     if (cancelStatus) {
       getActiveAppointments();
     }

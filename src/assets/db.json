@@ -1,14 +1,6 @@
 {
   "appointments": [
     {
-      "id": 1,
-      "date": "2023-09-30T12:00",
-      "name": "Alex Smith",
-      "service": "Manicure",
-      "phone": "+1 948 945 344",
-      "canceled": true
-    },
-    {
       "id": 1695613005764,
       "date": "2023-10-01T13:30",
       "name": "Ekaterina",
@@ -26,9 +18,8 @@
       "specialist": "Alina",
       "canceled": false
     },
-
     {
-      "id": 1695613334714,
+      "id": 1695613334714232,
       "date": "2023-08-19T13:30",
       "name": "Inna",
       "service": "haircut",
@@ -37,7 +28,25 @@
       "canceled": false
     },
     {
-      "id": 1695613397196,
+      "id": 1695613334123123200,
+      "date": "2023-08-19T13:30",
+      "name": "Ira",
+      "service": "haircut",
+      "phone": "+1 424 444 222",
+      "specialist": "Elena",
+      "canceled": false
+    },
+    {
+      "id": 16956133341231232,
+      "date": "2023-08-19T13:30",
+      "name": "Ira",
+      "service": "haircut",
+      "phone": "+1 424 444 222",
+      "specialist": "Elena",
+      "canceled": false
+    },
+    {
+      "id": 169561339723232,
       "date": "2023-10-19T13:50",
       "name": "Inna",
       "service": "Manicure",
@@ -48,20 +57,25 @@
   ],
   "employees": [
     {
+      "id": 1695905370800,
+      "phone": "+1 233 223 222",
       "name": "Alina",
-      "position": "manager"
+      "service": "Manicure",
+      "fired": true
     },
     {
-      "name": "Tolganai",
-      "position": "Administrator"
-    },
-    {
-      "name": "Alena",
-      "position": "hairdresser"
-    },
-    {
+      "id": 1695905448378,
       "name": "Elena",
-      "position": "hairdresser"
+      "service": "Hairdresser",
+      "phone": "+1 233 222 622",
+      "fired": true
+    },
+    {
+      "id": 1695905514021,
+      "phone": "+1 233 223 222",
+      "name": "Aika",
+      "service": "Manager",
+      "fired": false
     }
   ]
 }

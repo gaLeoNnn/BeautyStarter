@@ -4,11 +4,22 @@ import "./appointmentItem.scss";
 import dayjs from "dayjs";
 import { Optional } from "utility-types";
 
-export type AppointmentProps = Optional<IAppointment, "canceled" | "date"> & {
+export type AppointmentProps = Optional<IAppointment, "canceled" | "date" | "specialist"> & {
   handleOpenModal?: (state: number) => void;
+  showText?: boolean;
 };
 
-function AppointmentItem({ id, name, date, phone, service, canceled, specialist, handleOpenModal }: AppointmentProps) {
+function AppointmentItem({
+  id,
+  name,
+  date,
+  phone,
+  service,
+  canceled,
+  specialist,
+  handleOpenModal,
+  showText,
+}: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
@@ -28,10 +39,10 @@ function AppointmentItem({ id, name, date, phone, service, canceled, specialist,
   return (
     <div className="appointment">
       <div className="appointment__info">
-        <span className="appointment__date">Date: {formattedDate}</span>
+        {showText ? null : <span className="appointment__date">Date: {formattedDate}</span>}
         <span className="appointment__name">Name: {name}</span>
         <span className="appointment__service">Service: {service}</span>
-        <span className="appointment__specialist">Specialist: {specialist}</span>
+        {showText ? null : <span className="appointment__specialist">Specialist: {specialist}</span>}
         <span className="appointment__phone">Phone:{phone}</span>
       </div>
       {canceled === undefined ? (
